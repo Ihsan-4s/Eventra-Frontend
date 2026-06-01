@@ -1,5 +1,27 @@
 @import 'tailwindcss';
 
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary: #6366F1;
+  --primary-dark: #4F46E5;
+  --secondary: #0F172A;
+  --tertiary: #B95F00;
+  --neutral: #64748B;
+  --bg-light: #F1F2FE;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #0F172A;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Geist', sans-serif;
+}
+
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;
