@@ -109,7 +109,7 @@ export default function Landing() {
                             From tech summits to global gala dinners.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonials">
                         {testimonials.map((t) => (
                             <div
                                 key={t.name}
