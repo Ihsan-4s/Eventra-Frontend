@@ -29,7 +29,7 @@ export default function Login() {
             const { user, token } = res.data
             login(user, token)
             if (user.role === 'admin') {
-                navigate('/admin/dashboard')
+                navigate('/admin/admindashboard')
             } else {
                 navigate('/organizer/dashboard')
             }
