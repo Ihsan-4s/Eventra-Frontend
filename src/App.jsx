@@ -4,6 +4,10 @@ import Register from './pages/Auth/Register'
 import Dashboard from './pages/organizer/Dashboard'
 import MyEvents from './pages/organizer/MyEvents'
 import EventForm from './pages/organizer/EventForm'
+import EventDetail from './pages/public/EventDetail'
+import EventRegister from './pages/public/Register'
+import Payment from './pages/public/Payment'
+import Ticket from './pages/public/Ticket'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import Categories from './pages/admin/Categories'
 import AdminEvents from './pages/admin/AdminEvents'
@@ -41,6 +45,10 @@ function App() {
         <Route path="/organizer/events" element={<ProtectedRoute allowedRoles={['organizer']}><MyEvents /></ProtectedRoute>} />
         <Route path="/organizer/events/create" element={<ProtectedRoute allowedRoles={['organizer']}><EventForm /></ProtectedRoute>} />
         <Route path="/organizer/events/:id/edit" element={<ProtectedRoute allowedRoles={['organizer']}><EventForm /></ProtectedRoute>} />
+        <Route path="/events/:slug/register" element={<EventRegister />} />
+        <Route path="/events/:slug" element={<EventDetail />} />
+        <Route path="/payment/:transactionId" element={<Payment />} />
+        <Route path="/ticket/:ticketCode" element={<Ticket />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
