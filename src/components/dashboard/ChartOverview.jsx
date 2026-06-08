@@ -2,60 +2,60 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
-    Filler,
+    BarElement,
     Tooltip,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { Link } from "react-router-dom";
-import { CalendarPlus } from "lucide-react";
+} from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+import { Link } from 'react-router-dom'
+import { CalendarPlus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import api from '../../api/axios'
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    Tooltip
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip)
 
 export default function ChartOverview() {
-    const [monthlyData, setMonthlyData] = useState([20, 35, 28, 60, 25, 70]) // dummy dulu
-    const [labels, setLabels] = useState(["Jan", "Feb", "Mar", "Apr", "May", "Jun",])
+    const [events, setEvents] = useState([])
 
     useEffect(() => {
-        api.get('/organizer/dashboard')
-            .then(res => {
-                const monthly = res.data.data?.monthly_revenue
-                if (monthly) {
-                    setLabels(monthly.map(m => m.month))
-                    setMonthlyData(monthly.map(m => m.total))
-                }
-            })
+        api.get('/organizer/events')
+            .then(res => setEvents(res.data.data))
             .catch(err => console.error(err))
     }, [])
 
     const data = {
-        labels,
-        datasets: [
-            {
-                data: monthlyData,
-                borderColor: "#6366F1",
-                backgroundColor: "rgba(99, 102, 241, 0.15)",
-                fill: true,
-                tension: 0.45,
-                pointRadius: 4,
-                pointHoverRadius: 6,
-            }
-        ]
+        labels: events.map(e => e.title.length > 20 ? e.title.slice(0, 20) + '...' : e.title),
+        datasets: [{
+            data: events.map(e => Number(e.price)),
+            backgroundColor: '#6366F1',
+            borderRadius: 8,
+            hoverBackgroundColor: '#4F46E5',
+        }]
     }
 
     const options = {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: '#0F172A',
+                padding: 12,
+                displayColors: false,
+                callbacks: {
+                    label: ctx => `Rp ${Number(ctx.raw).toLocaleString('id-ID')}`
+                }
+            },
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { color: '#64748B', font: { size: 11 } },
+                border: { display: false },
+            },
+            y: {
+                display: false,
+            },
+        },
     }
 
     return (
@@ -63,21 +63,18 @@ export default function ChartOverview() {
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="mb-5 flex items-start justify-between">
                     <div>
-                        <h2 className="text-2xl font-bold text-[var(--secondary)]">
-                            Revenue Analytics
-                        </h2>
-                        <p className="mt-1 text-sm text-slate-500">
-                            Monthly earnings overview
-                        </p>
+                        <h2 className="text-2xl font-bold text-[var(--secondary)]">Event Overview</h2>
+                        <p className="mt-1 text-sm text-slate-500">Ticket price per event</p>
                     </div>
-
                     <span className="rounded-lg bg-[#EEF1FF] px-3 py-1 text-xs font-semibold text-[var(--secondary)]">
-                        Last 6 Months
+                        All Events
                     </span>
                 </div>
-
-                <div className="h-[250px] rounded-xl bg-[#EEF1FF] p-4" style={{ width: 700, maxWidth: '100%' }}>
-                    <Line data={data} options={options} />
+                <div className="h-[250px] rounded-xl bg-[#EEF1FF] p-4">
+                    {events.length > 0
+                        ? <Bar data={data} options={options} />
+                        : <div className="h-full flex items-center justify-center text-slate-400 text-sm">No events yet.</div>
+                    }
                 </div>
             </div>
 
@@ -85,14 +82,11 @@ export default function ChartOverview() {
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[var(--primary)]">
                     <CalendarPlus size={24} />
                 </div>
-
                 <h2 className="text-2xl font-bold leading-tight text-white">
                     Organize Events Easier with Eventra
                 </h2>
-
                 <p className="mt-3 text-sm leading-6 text-white">
-                    Kelola event, peserta, transaksi, dan check-in dalam satu dashboard
-                    yang simpel dan rapi.
+                    Kelola event, peserta, transaksi, dan check-in dalam satu dashboard yang simpel dan rapi.
                 </p>
                 <Link to="/organizer/events/create">
                     <button className="mt-8 w-full rounded-xl bg-white px-4 py-3 text-sm font-bold text-[var(--primary)] transition hover:bg-slate-100">
@@ -101,5 +95,5 @@ export default function ChartOverview() {
                 </Link>
             </div>
         </section>
-    );
+    )
 }

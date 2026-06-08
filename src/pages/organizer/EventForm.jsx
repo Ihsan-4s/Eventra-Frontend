@@ -38,23 +38,21 @@ export default function EventForm() {
     // Fetch event data kalau edit
     useEffect(() => {
         if (!isEdit) return
-        api.get(`/organizer/events`)
+        api.get(`/organizer/events/${id}/detail`)
             .then(res => {
-                const event = res.data.data.find(e => e.id === parseInt(id))
-                if (event) {
-                    setForm({
-                        category_id: event.category_id,
-                        organization_name: event.organization_name,
-                        title: event.title,
-                        description: event.description,
-                        location: event.location,
-                        event_date: event.event_date.slice(0, 10),
-                        price: event.price,
-                        quota: event.quota,
-                        status: event.status,
-                    })
-                    if (event.banner) setBannerPreview(`http://localhost:8000/storage/${event.banner}`)
-                }
+                const event = res.data.event
+                setForm({
+                    category_id: event.category_id,
+                    organization_name: event.organization_name,
+                    title: event.title,
+                    description: event.description,
+                    location: event.location,
+                    event_date: event.event_date.slice(0, 10),
+                    price: event.price,
+                    quota: event.quota,
+                    status: event.status,
+                })
+                if (event.banner) setBannerPreview(`http://localhost:8000/storage/${event.banner}`)
             })
             .catch(err => console.error(err))
     }, [id])
@@ -109,7 +107,7 @@ export default function EventForm() {
             <div className="ml-[250px]">
                 <NavbarDashboard title={isEdit ? 'Edit Event' : 'Create Event'} />
                 <main className="p-8">
-                    <div className="max-w-3xl">
+                    <div className="max-w-3xl mx-auto">
                         <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
                             <h2 className="font-['Geist'] text-xl font-bold text-[#0F172A] mb-6">
                                 {isEdit ? 'Edit Event' : 'Create New Event'}

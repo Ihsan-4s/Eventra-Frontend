@@ -12,7 +12,7 @@ export default function Payment() {
 
     useEffect(() => {
         api.get(`/payments/${transactionId}`)
-            .then(res => setPayment(res.data.payment))
+            .then(res => setPayment({ ...res.data.payment, qr_code: res.data.qr_code }))
             .catch(() => navigate('/'))
             .finally(() => setLoading(false))
     }, [transactionId])
@@ -22,7 +22,7 @@ export default function Payment() {
         try {
             const res = await api.post(`/payments/${transactionId}/simulate-pay`)
             const ticketCode = res.data.ticket?.ticket_code
-            localStorage.setItem('last_transaction_id', transactionId) // tambahin ini
+            localStorage.setItem('last_transaction_id', transactionId)
             navigate(`/ticket/${ticketCode}`)
         } catch (err) {
             alert(err.response?.data?.message || 'Pembayaran gagal.')
@@ -98,17 +98,17 @@ export default function Payment() {
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 text-center">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Scan QRIS</p>
 
-                    {/* QRIS Placeholder */}
-                    <div className="w-48 h-48 mx-auto bg-[#F8FAFC] border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center mb-4">
-                        <div className="text-center">
-                            <div className="grid grid-cols-3 gap-1 mb-2">
-                                {[...Array(9)].map((_, i) => (
-                                    <div key={i} className={`w-4 h-4 rounded-sm ${i % 2 === 0 ? 'bg-[#0F172A]' : 'bg-slate-200'}`} />
-                                ))}
-                            </div>
-                            <p className="text-xs text-slate-400">QRIS</p>
+                    {payment.qr_code ? (
+                        <img
+                            src={`data:image/svg+xml;base64,${payment.qr_code}`}
+                            alt="QRIS"
+                            className="w-48 h-48 mx-auto rounded-2xl"
+                        />
+                    ) : (
+                        <div className="w-48 h-48 mx-auto bg-[#F8FAFC] border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center">
+                            <p className="text-xs text-slate-400">QR tidak tersedia</p>
                         </div>
-                    </div>
+                    )}
 
                     <p className="text-xs text-slate-400 mb-1">Transaction ID</p>
                     <p className="font-mono text-sm font-bold text-[#0F172A]">{payment.transaction_id}</p>

@@ -123,7 +123,7 @@ export default function Ticket() {
 
                 {/* Download Button */}
                 <a
-                    href={`http://localhost:8000/api/organizer/events/${event.id}/export/registrations/pdf`}
+                    href={`http://localhost:8000/api/tickets/${ticketCode}/download`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 bg-[#0F172A] text-white py-4 rounded-2xl font-bold text-sm hover:bg-slate-800 transition"

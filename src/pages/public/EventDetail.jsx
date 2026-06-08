@@ -220,17 +220,9 @@ export default function EventDetail() {
 
                                 <button
                                     onClick={() => navigate(`/events/${slug}/register`)}
-                                    className="w-full mt-3 bg-[#6366F1] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#4F46E5] transition shadow-sm"
+                                    className="w-full mt-3 bg-[#6366F1] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-[#4F46E5] transition shadow-sm cursor-pointer"
                                 >
                                     Register Now
-                                </button>
-
-                                <button
-                                    type="button"
-                                    className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#6366F1] transition"
-                                >
-                                    <Share2 size={16} />
-                                    Share with friends
                                 </button>
 
                                 <p className="text-xs text-center text-slate-400 leading-relaxed">

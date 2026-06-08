@@ -17,7 +17,6 @@ const organizerMenu = [
     { label: 'Dashboard', icon: LayoutDashboard, path: '/organizer/dashboard' },
     { label: 'My Events', icon: CalendarDays, path: '/organizer/events' },
     { label: 'Participants', icon: Users, path: '/organizer/participants' },
-    { label: 'Transactions', icon: CreditCard, path: '/organizer/transactions' },
     { label: 'Check-in', icon: ScanLine, path: '/organizer/checkin' },
     { label: 'Reports', icon: BarChart3, path: '/organizer/reports' },
 ]

@@ -28,7 +28,7 @@ export default function Categories() {
         setError('')
         setSubmitting(true)
         try {
-            await api.post('/categories', { name: newName })
+            await api.post('/admin/categories', { name: newName })
             setNewName('')
             fetchCategories()
         } catch (err) {
@@ -42,7 +42,7 @@ export default function Categories() {
         setError('')
         setSubmitting(true)
         try {
-            await api.put(`/categories/${id}`, { name: editName })
+            await api.put(`/admin/categories/${id}`, { name: editName })
             setEditId(null)
             fetchCategories()
         } catch (err) {
@@ -55,7 +55,7 @@ export default function Categories() {
     const handleDelete = async (id) => {
         if (!confirm('Hapus kategori ini?')) return
         try {
-            await api.delete(`/categories/${id}`)
+            await api.delete(`/admin/categories/${id}`)
             fetchCategories()
         } catch (err) {
             alert(err.response?.data?.message || 'Gagal menghapus kategori.')
