@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Plus, Pencil, Trash2, CalendarDays, MapPin, Link2 } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -46,7 +45,6 @@ export default function MyEvents() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="My Events" />
                 <main className="p-8">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="font-['Geist'] text-xl font-bold text-[#0F172A]">My Events</h2>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Trash2, Eye } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -44,7 +43,6 @@ export default function AdminEvents() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Events" />
                 <main className="p-8">
                     <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
                         <div className="p-6 border-b border-slate-100">

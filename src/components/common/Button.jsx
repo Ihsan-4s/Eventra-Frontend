@@ -1,10 +1,4 @@
-export default function Button({
-    children,
-    variant = "primary",
-    size = "md",
-    className = "",
-    ...props
-}){
+export default function Button({children,variant = "primary",size = "md",className = "",...props}){
     const base =
         "inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed";
 

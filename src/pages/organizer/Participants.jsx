@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Users } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -45,7 +44,6 @@ export default function Participants() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Participants" />
                 <main className="p-8">
 
                     <div className="mb-6">

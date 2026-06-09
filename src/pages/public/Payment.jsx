@@ -51,7 +51,6 @@ export default function Payment() {
                     <p className="text-sm text-slate-500 mt-1">Scan QRIS below to complete your registration</p>
                 </div>
 
-                {/* Order Summary */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
                     <h2 className="font-['Geist'] font-bold text-[#0F172A] mb-4">Order Summary</h2>
 
@@ -114,7 +113,7 @@ export default function Payment() {
                     <p className="font-mono text-sm font-bold text-[#0F172A]">{payment.transaction_id}</p>
                 </div>
 
-                {/* Simulate Pay Button */}
+                {/* simulasi nya bayar*/}
                 {payment.payment_status === 'unpaid' ? (
                     <button
                         onClick={handleSimulatePay}

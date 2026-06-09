@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FileText, FileSpreadsheet, Download } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -71,10 +70,8 @@ export default function Reports() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Reports" />
                 <main className="p-8">
 
-                    {/* Event Selector */}
                     <div className="mb-8">
                         <label className="block text-xs font-semibold text-[#0F172A] mb-2">Select Event</label>
                         <select

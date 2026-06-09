@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Pencil, Trash2, Plus, X, Check } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -66,7 +65,6 @@ export default function Categories() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Categories" />
                 <main className="p-8">
                     <div className="max-w-2xl mx-auto">
                         {/* Create Form */}

@@ -2,12 +2,6 @@ import { useEffect, useState } from 'react'
 import { CalendarDays, MapPin } from 'lucide-react'
 import api from '../../api/axios'
 
-const statusColor = {
-    published: 'bg-emerald-50 text-emerald-600',
-    draft: 'bg-yellow-50 text-yellow-600',
-    cancelled: 'bg-red-50 text-red-600',
-}
-
 export default function RecentTransactions() {
     const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(true)
@@ -33,7 +27,6 @@ export default function RecentTransactions() {
                             <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Date</th>
                             <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Location</th>
                             <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Price</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +36,7 @@ export default function RecentTransactions() {
                             <tr><td colSpan={5} className="px-6 py-8 text-center text-slate-400">No events yet.</td></tr>
                         ) : (
                             events.map(event => (
-                                <tr key={event.id} className="border-t border-slate-100 hover:bg-slate-50 transition">
+                                <tr>
                                     <td className="px-6 py-4 font-medium text-[#0F172A] max-w-[200px] truncate">{event.title}</td>
                                     <td className="px-6 py-4 text-slate-600">
                                         <div className="flex items-center gap-1.5">
@@ -60,11 +53,7 @@ export default function RecentTransactions() {
                                     <td className="px-6 py-4 font-bold text-[#0F172A]">
                                         Rp {Number(event.price).toLocaleString('id-ID')}
                                     </td>
-                                    <td className="px-6 py-4">
-                                        <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${statusColor[event.status]}`}>
-                                            {event.status}
-                                        </span>
-                                    </td>
+                                    
                                 </tr>
                             ))
                         )}

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ScanLine, CheckCircle2, XCircle } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -51,7 +50,6 @@ export default function CheckIn() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Check-in" />
                 <main className="p-8">
                     <div className="max-w-lg mx-auto">
 

@@ -37,7 +37,6 @@ export default function Ticket() {
         <div className="min-h-screen bg-[#F4F6FF] flex items-center justify-center px-4 py-16">
             <div className="w-full max-w-md space-y-4">
 
-                {/* Success Banner */}
                 <div className="text-center">
                     <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-100 flex items-center justify-center mx-auto mb-4">
                         <CheckCircle2 size={32} className="text-emerald-500" />
@@ -46,10 +45,8 @@ export default function Ticket() {
                     <p className="text-sm text-slate-500 mt-1">Your ticket has been generated</p>
                 </div>
 
-                {/* Ticket Card */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
 
-                    {/* Header */}
                     <div className="bg-[#6366F1] p-6 text-white">
                         <p className="text-xs font-semibold text-indigo-200 uppercase tracking-wider mb-1">
                             {event.organization_name}
@@ -66,18 +63,15 @@ export default function Ticket() {
                             </div>
                         </div>
                     </div>
-
-                    {/* Dashed divider */}
                     <div className="flex items-center px-6">
                         <div className="w-5 h-5 rounded-full bg-[#F4F6FF] -ml-8 shrink-0" />
                         <div className="flex-1 border-t-2 border-dashed border-slate-200 mx-2" />
                         <div className="w-5 h-5 rounded-full bg-[#F4F6FF] -mr-8 shrink-0" />
                     </div>
 
-                    {/* Body */}
                     <div className="p-6 space-y-4">
 
-                        {/* Participant Info */}
+                        {/* participants */}
                         <div className="space-y-3">
                             {[
                                 { icon: User, label: 'Name', value: registration.full_name },
@@ -109,7 +103,6 @@ export default function Ticket() {
                             </div>
                         </div>
 
-                        {/* QR Code */}
                         <div className="flex flex-col items-center pt-2">
                             <img
                                 src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${ticketCode}`}
@@ -121,7 +114,7 @@ export default function Ticket() {
                     </div>
                 </div>
 
-                {/* Download Button */}
+                {/* Download */}
                 <a
                     href={`http://localhost:8000/api/tickets/${ticketCode}/download`}
                     target="_blank"

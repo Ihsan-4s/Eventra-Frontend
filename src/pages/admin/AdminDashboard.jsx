@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Users, CalendarDays, DollarSign, Ticket } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -40,7 +39,6 @@ export default function AdminDashboard() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title="Dashboard" />
                 <main className="p-8">
 
                     {/* Stats Cards */}

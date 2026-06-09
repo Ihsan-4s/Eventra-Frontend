@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ImagePlus } from 'lucide-react'
 import Sidebar from '../../components/layout/Sidebar'
-import NavbarDashboard from '../../components/layout/NavbarDashboard'
 import Footer from '../../components/layout/Footer'
 import api from '../../api/axios'
 
@@ -105,7 +104,6 @@ export default function EventForm() {
         <div className="min-h-screen bg-[#F8F9FF]">
             <Sidebar />
             <div className="ml-[250px]">
-                <NavbarDashboard title={isEdit ? 'Edit Event' : 'Create Event'} />
                 <main className="p-8">
                     <div className="max-w-3xl mx-auto">
                         <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">

@@ -61,14 +61,11 @@ export default function ChartOverview() {
     return (
         <section className="grid grid-cols-1 gap-6 xl:grid-cols-[2fr_1fr]">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="mb-5 flex items-start justify-between">
+                <div className="mb-5 flex items-start">
                     <div>
                         <h2 className="text-2xl font-bold text-[var(--secondary)]">Event Overview</h2>
                         <p className="mt-1 text-sm text-slate-500">Ticket price per event</p>
                     </div>
-                    <span className="rounded-lg bg-[#EEF1FF] px-3 py-1 text-xs font-semibold text-[var(--secondary)]">
-                        All Events
-                    </span>
                 </div>
                 <div className="h-[250px] rounded-xl bg-[#EEF1FF] p-4">
                     {events.length > 0
